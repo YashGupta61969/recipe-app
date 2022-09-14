@@ -1,49 +1,72 @@
 import React from 'react'
-import RotateLeftIcon from '@mui/icons-material/RotateLeft';
 
 function FilterBtn({query ,setFilterQuery}) {
 
     const setHealth = (e)=>{
-        const text = e.target.innerText
-        setFilterQuery(prev=>({
-            ...prev, 
-            health:text.toLowerCase()
-        }))
+        const text = e.target.innerText;
+        if(text === 'None'){
+          setFilterQuery(prev=>({
+            ...prev,
+            health:''
+          }))
+        }
+        else{
+          setFilterQuery(prev=>({
+              ...prev, 
+              health:text.toLowerCase()
+          }))
+        }
     }
 
     const setDiet = (e)=>{
-        const text = e.target.innerText
-        setFilterQuery(prev=>({
-            ...prev, 
-            diet:text.toLowerCase()
-        }))
+        const text = e.target.innerText;
+        if(text === 'None'){
+          setFilterQuery(prev=>({
+            ...prev,
+            diet:''
+          }))
+        }
+        else{
+          setFilterQuery(prev=>({
+              ...prev, 
+              diet:text.toLowerCase()
+          }))
+        }
     }
 
     const setCuisine = (e)=>{
-        const text = e.target.innerText
-        setFilterQuery(prev=>({
+        const text = e.target.innerText;
+        if(text === 'None'){
+          setFilterQuery(prev=>({
+            ...prev,
+            cuisine:''
+          }))
+        }
+        else{
+          setFilterQuery(prev=>({
             ...prev, 
             cuisine:text
-        }))
+          }))
+        }
     }
 
     const setMeal = (e)=>{
-        const text = e.target.innerText
-        setFilterQuery(prev=>({
+        const text = e.target.innerText;
+        if(text === 'None'){
+          setFilterQuery(prev=>({
+            ...prev,
+            mealType:''
+          }))
+        }
+        else{
+
+          setFilterQuery(prev=>({
             ...prev, 
             mealType:text
-        }))
-    }
+          }))
+        }
+      }
 
-
-    const resetFilter = ()=>{
-      setFilterQuery({
-        diet:'',
-        health:'',
-        mealType:'',
-        cuisine:''
-      })
-    }
 
   return (
     <div className="group inline-block text-red mt-5 align-top w-full ml-5 sm:w-fit">
@@ -85,6 +108,7 @@ function FilterBtn({query ,setFilterQuery}) {
   min-w-32
   "
           >
+            <li className="px-3 py-1 whitespace-nowrap hover:bg-gray-100" onClick={setHealth}>None</li>
             <li className="px-3 py-1 whitespace-nowrap hover:bg-gray-100" onClick={setHealth}>Vegetarian</li>
             <li className="px-3 py-1 whitespace-nowrap hover:bg-gray-100" onClick={setHealth}>Alcohol-cocktail</li>
             <li className="px-3 py-1 whitespace-nowrap hover:bg-gray-100" onClick={setHealth}>Alcohol-free</li>
@@ -123,6 +147,7 @@ function FilterBtn({query ,setFilterQuery}) {
   transition duration-150 ease-in-out origin-top-left
   min-w-32"
           >
+            <li className="px-3 py-1 whitespace-nowrap hover:bg-gray-100" onClick={setDiet}>None</li>
             <li className="px-3 py-1 whitespace-nowrap hover:bg-gray-100" onClick={setDiet}>Balanced</li>
             <li className="px-3 py-1 whitespace-nowrap hover:bg-gray-100" onClick={setDiet}>High-Fiber</li>
             <li className="px-3 py-1 whitespace-nowrap hover:bg-gray-100" onClick={setDiet}>High-Protein</li>
@@ -159,6 +184,7 @@ function FilterBtn({query ,setFilterQuery}) {
   min-w-32
   "
           >
+            <li className="px-3 py-1 hover:bg-gray-100" onClick={setCuisine}>None</li>
             <li className="px-3 py-1 hover:bg-gray-100" onClick={setCuisine}>Inidan</li>
             <li className="px-3 py-1 hover:bg-gray-100" onClick={setCuisine}>American</li>
             <li className="px-3 py-1 hover:bg-gray-100" onClick={setCuisine}>British</li>
@@ -195,7 +221,8 @@ function FilterBtn({query ,setFilterQuery}) {
   min-w-32
   "
           >
-            <li className="px-3 py-1 hover:bg-gray-100" onClick={setMeal}>Breakfats</li>
+            <li className="px-3 py-1 hover:bg-gray-100" onClick={setMeal}>None</li>
+            <li className="px-3 py-1 hover:bg-gray-100" onClick={setMeal}>Breakfast</li>
             <li className="px-3 py-1 hover:bg-gray-100" onClick={setMeal}>Lunch</li>
             <li className="px-3 py-1 hover:bg-gray-100" onClick={setMeal}>Dinner</li>
             <li className="px-3 py-1 hover:bg-gray-100" onClick={setMeal}>Snack</li>
@@ -204,10 +231,6 @@ function FilterBtn({query ,setFilterQuery}) {
         </li>
 
       </ul>
-      {(query.cuisine || query.diet || query.health || query.mealType) &&
-      <div className="mt-3" onClick={resetFilter}>
-        <RotateLeftIcon sx={{fontSize:'2.8rem'}}/>
-      </div>}
     </div>
   )
 }
