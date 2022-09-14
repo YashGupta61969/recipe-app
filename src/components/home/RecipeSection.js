@@ -37,9 +37,9 @@ function RecipeSection({recipes, setRecipes}) {
     <>
     {recipes.count ? <>
         <div className='w-4/5 mt-3 mx-auto flex justify-around py-1 max-w-sm min-w-fit'>
-            <button onClick={prevPage} className="flex items-center justify-center bg-red py-2 w-28 text-white rounded"><WestIcon/> Previous</button>
+            <button onClick={prevPage} className="flex items-center justify-center bg-red py-2 w-28 text-white rounded"><WestIcon sx={{marginRight:'5px'}}/> Previous</button>
             <div className="text-2xl mx-3">Page: {pageNo}</div>
-            <button onClick={nextPage} className="flex items-center justify-center bg-red py-2 w-28 text-white rounded">Next<EastIcon/></button>
+            <button onClick={nextPage} className="flex items-center justify-center bg-red py-2 w-28 text-white rounded">Next<EastIcon sx={{marginLeft:'5px'}}/></button>
     </div>
 
     <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 place-items-center mt-2 pb-8'>

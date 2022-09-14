@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import Header from "./Header";
-import Hero from './Hero';
+import Header from "../header/Header";
+import Hero from '../hero/Hero';
 import RecipeSection from './RecipeSection';
 
 const Home = () => {

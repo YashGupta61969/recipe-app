@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import UploadIcon from '@mui/icons-material/Upload';
 import {getDownloadURL, ref, uploadBytes} from 'firebase/storage'
-import { auth, storage } from '../firebase/firebase';
+import { auth, storage } from '../../firebase/firebase';
 import { useNavigate } from 'react-router-dom';
 import { updateProfile } from 'firebase/auth';
 

@@ -1,18 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import MenuIcon from '@mui/icons-material/Menu';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
-import { auth } from '../firebase/firebase';
+import { auth } from '../../firebase/firebase';
 import { Link, useNavigate } from 'react-router-dom';
 
 function Header() {
   const navigate = useNavigate()
   const [toggleMenu, setToggleMenu] = useState(false)
-  // const url ="https://api.edamam.com/search?q=chicken&app_id=23efa564&app_key=858c2982c6031489d8b8b22cb1c82f93&from=0&to=5&calories=591-722&health=alcohol-free";
-
-  // fetch(url).then(resp=>resp.json()).then(data=>console.log(data))
-
 
   useEffect(() => {
     onAuthStateChanged(auth, user => {
@@ -31,9 +26,8 @@ function Header() {
       <div onClick={() => setToggleMenu(prev => !prev)} className="cursor-pointer sm:hidden">
         <MenuIcon />
       </div>
-      {toggleMenu && <ul className='py-5 px-2 absolute top-16 left-0 right-0 bg-red flex flex-col space-y-4'>
+      {toggleMenu && <ul className='py-5 px-2 absolute top-16 left-0 right-0 bg-red flex flex-col space-y-4 z-30'>
         <li className='text-white rounded pl-2'><Link to={'/'}>Home</Link></li>
-        <li className='text-white rounded pl-2 flex items-center'>Filter <KeyboardArrowDownIcon /> </li>
         <li className='text-white rounded pl-2'><Link to={'/profile'}>Profile</Link></li>
         <li onClick={logOut} className='text-white rounded pl-2'>Log Out</li>
       </ul>}

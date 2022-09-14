@@ -46,10 +46,10 @@ function FilterBtn({query ,setFilterQuery}) {
     }
 
   return (
-    <div className="group inline-block text-red mt-5">
+    <div className="group inline-block text-red mt-5 align-top w-full ml-5 sm:w-fit">
       <button className="outline-none focus:outline-none px-3 py-1 rounded-sm flex items-center min-w-32 bg-red text-white">
 
-        <span className="pr-1 font-semibold flex-1">Filter</span>
+        <span className="pr-1 font-semibold flex-1 text-xl">Filter</span>
         <span>
           <svg className="fill-current h-4 w-4 transform group-hover:-rotate-180
         transition duration-150 ease-in-out" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
