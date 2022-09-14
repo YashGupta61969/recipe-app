@@ -3,14 +3,15 @@ import {getFirestore} from 'firebase/firestore';
 import {getAuth} from 'firebase/auth';
 import { getStorage } from "firebase/storage";
 
-// private configs. Must be hidden. Visible for devepment mode
+// private configs. Must be hidden.
+
 const firebaseConfig = {
-  apiKey: "AIzaSyBRlg75smfZ_HgWddC4Rj9VFsY5QAugDhc",
-  authDomain: "recipe-app-4f2ba.firebaseapp.com",
-  projectId: "recipe-app-4f2ba",
-  storageBucket: "recipe-app-4f2ba.appspot.com",
-  messagingSenderId: "357160867129",
-  appId: "1:357160867129:web:67c81ff97d7ab9bac684e8"
+  apiKey:  process.env.REACT_APP_FIREBASE_API,
+  authDomain:  process.env.REACT_APP_AUTH_DOMAIL,
+  projectId:  process.env.REACT_APP_PROJECT_ID,
+  storageBucket:  process.env.REACT_APP_STORAGE,
+  messagingSenderId:  process.env.REACT_APP_SENDER,
+  appId:process.env.REACT_APP_FIREBASE_APP_ID, 
 };
 
 // Initialize Firebase
