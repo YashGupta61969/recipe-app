@@ -36,6 +36,15 @@ function FilterBtn({query ,setFilterQuery}) {
     }
 
 
+    const resetFilter = ()=>{
+      setFilterQuery({
+        diet:'',
+        health:'',
+        mealType:'',
+        cuisine:''
+      })
+    }
+
   return (
     <div className="group inline-block text-red mt-5">
       <button className="outline-none focus:outline-none px-3 py-1 rounded-sm flex items-center min-w-32 bg-red text-white">
@@ -116,7 +125,7 @@ function FilterBtn({query ,setFilterQuery}) {
           >
             <li className="px-3 py-1 whitespace-nowrap hover:bg-gray-100" onClick={setDiet}>Balanced</li>
             <li className="px-3 py-1 whitespace-nowrap hover:bg-gray-100" onClick={setDiet}>High-Fiber</li>
-            <li className="px-3 py-1 whitespace-nowrap hover:bg-gray-100" onClick={setDiet}>High-Prptein</li>
+            <li className="px-3 py-1 whitespace-nowrap hover:bg-gray-100" onClick={setDiet}>High-Protein</li>
             <li className="px-3 py-1 whitespace-nowrap hover:bg-gray-100" onClick={setDiet}>Low-Carb</li>
             <li className="px-3 py-1 whitespace-nowrap hover:bg-gray-100" onClick={setDiet}>Low-fat</li>
             <li className="px-3 py-1 whitespace-nowrap hover:bg-gray-100" onClick={setDiet}>Low-Sodium</li>
@@ -196,7 +205,7 @@ function FilterBtn({query ,setFilterQuery}) {
 
       </ul>
       {(query.cuisine || query.diet || query.health || query.mealType) &&
-      <div className="mt-3">
+      <div className="mt-3" onClick={resetFilter}>
         <RotateLeftIcon sx={{fontSize:'2.8rem'}}/>
       </div>}
     </div>

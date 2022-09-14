@@ -11,15 +11,19 @@ function RecipeSection({recipes, setRecipes}) {
     // console.log(recipes)
 
     const nextPage = async()=>{        
+        
+        try {
+            const resp = await fetch(recipes?._links?.next.href)
+            const data = await resp.json()
+            setRecipes(data)
             setPageNo(prev=>prev+1)
-
-            try {
-                const resp = await fetch(recipes._links.next.href)
-                const data = await resp.json()
-                setRecipes(data)
             } catch (error) {
                 console.log(error)
             }
+        }
+
+        const prevPage = async()=>{
+            // const resp = fetch
         }
 
         const redirectToRecipePage = (obj)=>{
@@ -28,10 +32,12 @@ function RecipeSection({recipes, setRecipes}) {
               navigate(`/recipe/${id}`)
         }
 
+        console.log(recipes)
   return (
     <>
-    <div className='w-4/5 mt-3 mx-auto flex justify-around py-1 max-w-sm min-w-fit'>
-            <button className="flex items-center justify-center bg-red py-2 w-28 text-white rounded"><WestIcon/> Previous</button>
+    {recipes.count ? <>
+        <div className='w-4/5 mt-3 mx-auto flex justify-around py-1 max-w-sm min-w-fit'>
+            <button onClick={prevPage} className="flex items-center justify-center bg-red py-2 w-28 text-white rounded"><WestIcon/> Previous</button>
             <div className="text-2xl mx-3">Page: {pageNo}</div>
             <button onClick={nextPage} className="flex items-center justify-center bg-red py-2 w-28 text-white rounded">Next<EastIcon/></button>
     </div>
@@ -49,6 +55,8 @@ function RecipeSection({recipes, setRecipes}) {
         })}
 
     </div>
+    </> : <h1 className='text-center text-4xl mt-8'>No Recipes Found</h1>
+    }
     </>
   )
 }
