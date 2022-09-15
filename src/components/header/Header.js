@@ -9,13 +9,17 @@ function Header() {
   const navigate = useNavigate()
   const [toggleMenu, setToggleMenu] = useState(false)
 
+
+  // checks whether the user exists or not
   useEffect(() => {
     onAuthStateChanged(auth, user => {
       if (!user) {
         navigate('/login')
       }
     })
+    // eslint-disable-next-line
   }, [])
+
 
   const logOut = () => {
     signOut(auth)

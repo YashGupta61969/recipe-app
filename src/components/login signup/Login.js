@@ -18,13 +18,14 @@ function Login() {
         navigate('/')
       }
     })
-
+// eslint-disable-next-line
   },[])
 
   const handleChange = (e)=>{
     setData({...data, [e.target.name]: e.target.value})
 }
 
+// logs in into the web
   const userLogin = ()=>{
     signInWithEmailAndPassword(auth, data.email, data.password)
     .then(data=>console.log(data))

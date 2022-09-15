@@ -1,17 +1,14 @@
 import React, { useState} from 'react'
 import { useNavigate } from 'react-router-dom'
-import WestIcon from '@mui/icons-material/West';
 import EastIcon from '@mui/icons-material/East';
 
 
 function RecipeSection({recipes, setRecipes}) {
     const [pageNo, setPageNo] = useState(1)
-    // const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
-    // console.log(recipes)
+    
 
     const nextPage = async()=>{        
-        
         try {
             const resp = await fetch(recipes?._links?.next.href)
             const data = await resp.json()
@@ -22,23 +19,17 @@ function RecipeSection({recipes, setRecipes}) {
             }
         }
 
-        const prevPage = async()=>{
-            // const resp = fetch
-        }
-
         const redirectToRecipePage = (obj)=>{
               const temp = obj._links.self.href.split('?')[0].split('/')
               const id = temp[temp.length-1]
               navigate(`/recipe/${id}`)
         }
 
-        console.log(recipes)
   return (
     <>
     {recipes.count ? <>
-        <div className='w-4/5 mt-3 mx-auto flex justify-around py-1 max-w-sm min-w-fit'>
-            <button onClick={prevPage} className="flex items-center justify-center bg-red py-2 w-28 text-white rounded"><WestIcon sx={{marginRight:'5px'}}/> Previous</button>
-            <div className="text-2xl mx-3">Page: {pageNo}</div>
+        <div className='w-64 mt-3 mx-auto flex justify-around py-1 max-w-sm min-w-fit'>
+            <div className="text-2xl mx-1">Page: {pageNo}</div>
             <button onClick={nextPage} className="flex items-center justify-center bg-red py-2 w-28 text-white rounded">Next<EastIcon sx={{marginLeft:'5px'}}/></button>
     </div>
 

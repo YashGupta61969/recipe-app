@@ -17,21 +17,26 @@ function Profile() {
         }
     }
     
+
+    // uploads profile image to storage
     const uploadImg = async() => {
         if(img){
             const imgRef = ref(storage, `avatar/${auth.currentUser.uid}`)
             const snapshot = await uploadBytes(imgRef, img);
             const photoURL = await getDownloadURL(imgRef)     
+
+            // updates the users profile photo
             updateProfile(currentUser, {photoURL})
         }
         
     }
 
+
+// grabs the current user profile if exists
     useEffect(()=>{
         if(currentUser?.photoURL){
             setUserImgUrl(currentUser.photoURL);
         }
-        // console.log(currentUser)
     }, [currentUser])
 
     return (

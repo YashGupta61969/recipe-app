@@ -1,10 +1,9 @@
 import { initializeApp } from "firebase/app";
-import {getFirestore} from 'firebase/firestore';
 import {getAuth} from 'firebase/auth';
 import { getStorage } from "firebase/storage";
 
-// private configs. Must be hidden.
 
+// private configs. hidden in .env.
 const firebaseConfig = {
   apiKey:  process.env.REACT_APP_FIREBASE_API,
   authDomain:  process.env.REACT_APP_AUTH_DOMAIL,
@@ -16,9 +15,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-// initialize firestore
-export const db = getFirestore(app);
 
 // initialize storage
 export const storage = getStorage(app)

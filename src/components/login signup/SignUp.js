@@ -25,6 +25,7 @@ function SignUp() {
         setData({...data, [e.target.name]: e.target.value})
     }
 
+    // creates a new user account
     const createAccount = ()=>{
         createUserWithEmailAndPassword(auth, data.email, data.password)
         .then(data=>console.log(data))
